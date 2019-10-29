@@ -44,7 +44,7 @@ app.use(multer({
 	preservePath: false
 }).single('image'));
 
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/api/images', express.static(path.join(__dirname, 'images')));
 
 
 app.use((req, res, next) => {
@@ -55,11 +55,11 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use('', userRouter);
-app.use('/recipe', recipeRouter);
-app.use('/ingredient', ingredientRouter);
-app.use('/refrigerator', refrigeratorRouter);
-app.use('/shopping-list', shoppingListRouter);
+app.use('/api', userRouter);
+app.use('/api/recipe', recipeRouter);
+app.use('/api/ingredient', ingredientRouter);
+app.use('/api/refrigerator', refrigeratorRouter);
+app.use('/api/shopping-list', shoppingListRouter);
 
 app.use((error, req, res, next) => {
 	console.log(error);
